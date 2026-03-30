@@ -1,5 +1,4 @@
 # LLM Bias Evaluation Pipeline — Category-Level Analysis
-## Mohanraj Ramanujam | PA2312049010014 | M.Tech AI, SRM University
 
 ---
 
