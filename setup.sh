@@ -43,30 +43,14 @@ pip install -q \
     seaborn \
     ipywidgets \
     notebook \
-    indic-nlp-library \
-    IndicTransToolkit \
     huggingface_hub
 
 echo "   Packages installed."
 
 # ── 3. Install IndicTrans2 ────────────────────────────────────────────────────
 echo ""
-echo "[3/5] Installing IndicTrans2..."
-if [ ! -d "IndicTrans2" ]; then
-    git clone https://github.com/AI4Bharat/IndicTrans2.git
-fi
-
+echo "[3/5] IndicTrans2 skipped — using NLLB for both Tamil and Hindi."
 pip install -q nltk sacrebleu
-
-# Verify IndicTransToolkit import
-python3 -c "
-try:
-    from IndicTransToolkit.processor import IndicProcessor
-    print('   IndicTransToolkit ready.')
-except ImportError as e:
-    print(f'   WARNING: {e}')
-    print('   Trying fallback install...')
-" || true
 
 # ── 4. Download NLLB model (Hindi translation) ────────────────────────────────
 echo ""

@@ -41,6 +41,7 @@ NLLB_CACHE_DIR   = os.path.join(BASE_DIR, "models", "nllb")
 # ── NLLB language codes ───────────────────────────────────────────────────────
 NLLB_SRC_LANG    = "eng_Latn"
 NLLB_HI_LANG     = "hin_Deva"
+NLLB_TA_LANG     = "tam_Taml"
 
 # ── Translation batch sizes ───────────────────────────────────────────────────
 TRANSLATION_BATCH_SIZE = 32   # number of sentences per translation batch
