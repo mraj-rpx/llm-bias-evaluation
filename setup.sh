@@ -12,8 +12,10 @@ echo "============================================================"
 # ── 1. Core Python packages ───────────────────────────────────────────────────
 echo ""
 echo "[1/5] Installing core packages..."
+
+pip install -q torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
 pip install -q \
-    torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 \
     transformers==4.40.0 \
     accelerate==0.29.3 \
     sentencepiece==0.2.0 \
