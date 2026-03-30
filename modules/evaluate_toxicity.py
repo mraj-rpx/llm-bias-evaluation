@@ -60,7 +60,8 @@ def load_model(model_name: str):
         torch_dtype=dtype,
         device_map=cfg["device_map"],
         trust_remote_code=cfg["trust_remote_code"],
-    use_safetensors=True,
+        use_safetensors=True,
+        revision=cfg.get("revision", "main"),
     )
     model.eval()
     log.info(f"  {model_name} loaded.")

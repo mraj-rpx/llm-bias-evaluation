@@ -72,6 +72,7 @@ MODEL_CONFIGS = {
         "trust_remote_code": True,  # required for Falcon custom architecture
         "stereo_batch": 32,
         "toxicity_batch": 8,
+        "revision":    "main",
     },
     "Mistral-7B": {
         "repo":        "mistralai/Mistral-7B-v0.1",
