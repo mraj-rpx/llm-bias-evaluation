@@ -1,24 +1,34 @@
 #!/bin/bash
 # =============================================================================
-# setup.sh — Environment setup for the LLM Bias Evaluation Pipeline
-# Run ONCE on a fresh RunPod instance before starting the notebook
+# setup.sh — Environment setup for RunPod PyTorch 2.1.0 template
+# PyTorch is already installed in this template — skipping torch install
 # =============================================================================
 
 set -e
 echo "============================================================"
 echo " LLM Bias Evaluation Pipeline — Environment Setup"
+echo " Template: RunPod PyTorch 2.1.0"
 echo "============================================================"
 
-# ── 1. Core Python packages ───────────────────────────────────────────────────
+# ── 1. Verify existing PyTorch installation ───────────────────────────────────
 echo ""
-echo "[1/5] Installing core packages..."
+echo "[1/5] Verifying PyTorch..."
+python3 -c "
+import torch
+print(f'   PyTorch version : {torch.__version__}')
+print(f'   CUDA available  : {torch.cuda.is_available()}')
+if torch.cuda.is_available():
+    print(f'   GPU             : {torch.cuda.get_device_name(0)}')
+    print(f'   VRAM            : {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB')
+"
 
-pip install -q torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
+# ── 2. Install remaining packages from PyPI ───────────────────────────────────
+echo ""
+echo "[2/5] Installing pipeline packages..."
 pip install -q \
-    transformers==4.40.0 \
-    accelerate==0.29.3 \
-    sentencepiece==0.2.0 \
+    transformers \
+    accelerate \
+    sentencepiece \
     sacremoses \
     datasets \
     pandas \
@@ -28,78 +38,80 @@ pip install -q \
     matplotlib \
     seaborn \
     ipywidgets \
-    jupyter \
-    notebook
+    notebook \
+    indic-nlp-library \
+    IndicTransToolkit \
+    huggingface_hub
 
-echo "   Core packages installed."
+echo "   Packages installed."
 
-# ── 2. IndicTrans2 (AI4Bharat) for Tamil translation ─────────────────────────
+# ── 3. Install IndicTrans2 ────────────────────────────────────────────────────
 echo ""
-echo "[2/5] Installing IndicTrans2 for Tamil translation..."
-pip install -q \
-    nltk \
-    sacrebleu \
-    indic-nlp-library
-
-# Clone and install IndicTrans2
+echo "[3/5] Installing IndicTrans2..."
 if [ ! -d "IndicTrans2" ]; then
     git clone https://github.com/AI4Bharat/IndicTrans2.git
 fi
-cd IndicTrans2
-pip install -q -e .
-cd ..
 
-# Download IndicTrans2 model (en-indic direction)
-echo "   Downloading IndicTrans2 en-indic model..."
+pip install -q nltk sacrebleu
+
+# Verify IndicTransToolkit import
 python3 -c "
-from huggingface_hub import snapshot_download
-snapshot_download(
-    repo_id='ai4bharat/indictrans2-en-indic-1B',
-    local_dir='models/indictrans2-en-indic',
-    ignore_patterns=['*.msgpack','*.h5','flax_model*']
-)
-print('   IndicTrans2 model downloaded.')
-"
+try:
+    from IndicTransToolkit.processor import IndicProcessor
+    print('   IndicTransToolkit ready.')
+except ImportError as e:
+    print(f'   WARNING: {e}')
+    print('   Trying fallback install...')
+" || true
 
-echo "   IndicTrans2 ready."
-
-# ── 3. NLLB (for Hindi translation) ──────────────────────────────────────────
+# ── 4. Download NLLB model (Hindi translation) ────────────────────────────────
 echo ""
-echo "[3/5] Downloading NLLB-200-distilled-600M for Hindi translation..."
+echo "[4/5] Downloading NLLB model for Hindi translation..."
 python3 -c "
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-print('  Downloading NLLB tokenizer...')
-AutoTokenizer.from_pretrained('facebook/nllb-200-distilled-600M', cache_dir='models/nllb')
-print('  Downloading NLLB model...')
-AutoModelForSeq2SeqLM.from_pretrained('facebook/nllb-200-distilled-600M', cache_dir='models/nllb')
-print('  NLLB ready.')
+print('   Downloading NLLB tokenizer...')
+AutoTokenizer.from_pretrained(
+    'facebook/nllb-200-distilled-600M',
+    cache_dir='models/nllb'
+)
+print('   Downloading NLLB model...')
+AutoModelForSeq2SeqLM.from_pretrained(
+    'facebook/nllb-200-distilled-600M',
+    cache_dir='models/nllb'
+)
+print('   NLLB ready.')
 "
 
-# ── 4. HuggingFace login for gated models (LLaMA-2) ──────────────────────────
+# ── 5. HuggingFace login ──────────────────────────────────────────────────────
 echo ""
-echo "[4/5] HuggingFace authentication..."
-echo "   NOTE: LLaMA-2-7B requires HuggingFace login."
-echo "   Run the following command and enter your HF token:"
-echo "     huggingface-cli login"
-echo "   Or set environment variable:  export HF_TOKEN=your_token_here"
-echo "   (You can skip this if you already have a cached token)"
+echo "[5/5] HuggingFace login..."
+echo "   Logging in with your HF token..."
+echo "   (Required for LLaMA-2-7B access)"
+huggingface-cli login
 
-# ── 5. Verify GPU ─────────────────────────────────────────────────────────────
+# ── Final verification ────────────────────────────────────────────────────────
 echo ""
-echo "[5/5] Verifying GPU..."
+echo "============================================================"
+echo " Verification"
+echo "============================================================"
 python3 -c "
 import torch
-if torch.cuda.is_available():
-    name = torch.cuda.get_device_name(0)
-    mem  = torch.cuda.get_device_properties(0).total_memory / 1e9
-    print(f'   GPU: {name}')
-    print(f'   VRAM: {mem:.1f} GB')
-else:
-    print('   WARNING: No CUDA GPU detected. Pipeline requires GPU.')
+from transformers import AutoTokenizer
+from IndicTransToolkit.processor import IndicProcessor
+from detoxify import Detoxify
+import pandas, numpy, matplotlib
+print('   torch        :', torch.__version__)
+print('   transformers : OK')
+print('   IndicTrans   : OK')
+print('   detoxify     : OK')
+print('   pandas       : OK')
+print('   GPU ready    :', torch.cuda.is_available())
 "
 
 echo ""
 echo "============================================================"
-echo " Setup complete. You can now run:  jupyter notebook"
-echo " Then open:  pipeline_notebook.ipynb"
+echo " Setup complete."
+echo " Next steps:"
+echo "   1. Copy your CSVs to data/"
+echo "   2. jupyter notebook pipeline_notebook.ipynb"
 echo "============================================================"
