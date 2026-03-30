@@ -41,7 +41,7 @@ class IndicTrans2Translator:
     def __init__(self):
         log.info("Loading IndicTrans2 model for English → Tamil...")
         try:
-            from IndicTransToolkit import IndicProcessor
+            from IndicTransToolkit.processor import IndicProcessor
             from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
             self.ip = IndicProcessor(inference=True)
