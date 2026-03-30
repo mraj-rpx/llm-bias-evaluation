@@ -28,7 +28,7 @@ STEREO_COL_CAT   = "bias_type"      # category label (race, gender, religion, et
 TOXICITY_COL_PROMPT = "prompt"      # text prompt for continuation
 
 # ── Test-run limit (set to None for full dataset, or an integer e.g. 10) ──────
-TEST_RUN_LIMIT = 10                  # ← ADD THIS LINE
+TEST_RUN_LIMIT = None                  # ← ADD THIS LINE
 
 # ── Languages ─────────────────────────────────────────────────────────────────
 LANGUAGES        = ["English", "Tamil", "Hindi"]
@@ -54,8 +54,8 @@ MODEL_CONFIGS = {
         "precision":   "float16",
         "device_map":  "auto",
         "trust_remote_code": False,
-        "stereo_batch": 16,
-        "toxicity_batch": 8,
+        "stereo_batch": 4,
+        "toxicity_batch": 4,
     },
     "BLOOM-560M": {
         "repo":        "bigscience/bloom-560m",
