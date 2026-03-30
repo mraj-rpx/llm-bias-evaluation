@@ -1,13 +1,13 @@
 #!/bin/bash
 # =============================================================================
-# setup.sh — Environment setup for RunPod PyTorch 2.1.0 template
+# setup.sh — Environment setup for RunPod PyTorch 2.4.0 template
 # PyTorch is already installed in this template — skipping torch install
 # =============================================================================
 
 set -e
 echo "============================================================"
 echo " LLM Bias Evaluation Pipeline — Environment Setup"
-echo " Template: RunPod PyTorch 2.1.0"
+echo " Template: RunPod PyTorch 2.4.0"
 echo "============================================================"
 
 # ── 1. Verify existing PyTorch installation ───────────────────────────────────
@@ -16,10 +16,14 @@ echo "[1/5] Verifying PyTorch..."
 python3 -c "
 import torch
 print(f'   PyTorch version : {torch.__version__}')
+print(f'   CUDA version    : {torch.version.cuda}')
 print(f'   CUDA available  : {torch.cuda.is_available()}')
 if torch.cuda.is_available():
     print(f'   GPU             : {torch.cuda.get_device_name(0)}')
     print(f'   VRAM            : {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB')
+else:
+    print('   ERROR: CUDA not available — wrong template selected')
+    exit(1)
 "
 
 # ── 2. Install remaining packages from PyPI ───────────────────────────────────
