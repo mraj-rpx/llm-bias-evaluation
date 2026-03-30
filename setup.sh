@@ -30,7 +30,7 @@ else:
 echo ""
 echo "[2/5] Installing pipeline packages..."
 pip install -q \
-    transformers \
+    "transformers==4.38.2" \
     accelerate \
     sentencepiece \
     sacremoses \
@@ -81,7 +81,8 @@ AutoTokenizer.from_pretrained(
 print('   Downloading NLLB model...')
 AutoModelForSeq2SeqLM.from_pretrained(
     'facebook/nllb-200-distilled-600M',
-    cache_dir='models/nllb'
+    cache_dir='models/nllb',
+    use_safetensors=True
 )
 print('   NLLB ready.')
 "
