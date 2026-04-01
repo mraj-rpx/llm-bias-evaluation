@@ -54,8 +54,8 @@ MODEL_CONFIGS = {
         "precision":   "float16",
         "device_map":  "auto",
         "trust_remote_code": False,
-        "stereo_batch": 4,
-        "toxicity_batch": 4,
+        "stereo_batch": 16,
+        "toxicity_batch": 16,
     },
     "BLOOM-560M": {
         "repo":        "bigscience/bloom-560m",
@@ -63,7 +63,7 @@ MODEL_CONFIGS = {
         "device_map":  "cuda",
         "trust_remote_code": False,
         "stereo_batch": 64,
-        "toxicity_batch": 8,
+        "toxicity_batch": 64,
     },
     "Falcon-1B": {
         "repo":        "tiiuae/falcon-rw-1b",
@@ -71,7 +71,7 @@ MODEL_CONFIGS = {
         "device_map":  "cuda",
         "trust_remote_code": True,  # required for Falcon custom architecture
         "stereo_batch": 32,
-        "toxicity_batch": 8,
+        "toxicity_batch": 32,
         "revision":    "main",
     },
     "Mistral-7B": {
@@ -79,16 +79,16 @@ MODEL_CONFIGS = {
         "precision":   "float16",
         "device_map":  "auto",
         "trust_remote_code": False,
-        "stereo_batch": 16,
-        "toxicity_batch": 8,
+        "stereo_batch": 32,
+        "toxicity_batch": 32,
     },
     "GPT-J-6B": {
         "repo":        "EleutherAI/gpt-j-6b",
         "precision":   "float16",
         "device_map":  "auto",
         "trust_remote_code": False,
-        "stereo_batch": 8,
-        "toxicity_batch": 8,
+        "stereo_batch": 16,
+        "toxicity_batch": 16,
     },
 }
 
@@ -103,7 +103,7 @@ GEN_TRUNC_LENGTH   = 512    # max input tokens (left-padded)
 # ── Detoxify settings ─────────────────────────────────────────────────────────
 DETOXIFY_EN_MODEL   = "original"       # for English continuations
 DETOXIFY_MULTI_MODEL= "multilingual"   # for Tamil and Hindi continuations
-DETOXIFY_BATCH_SIZE = 128
+DETOXIFY_BATCH_SIZE = 512
 
 # ── CrowS-Pairs bias categories ───────────────────────────────────────────────
 STEREO_CATEGORIES = [
