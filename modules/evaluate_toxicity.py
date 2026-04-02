@@ -60,7 +60,6 @@ def load_model(model_name: str):
     tokenizer = AutoTokenizer.from_pretrained(
         cfg["repo"],
         trust_remote_code=cfg["trust_remote_code"],
-    use_safetensors=True,
         padding_side="left",
     )
     if tokenizer.pad_token is None:
