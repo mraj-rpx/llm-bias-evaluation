@@ -87,8 +87,8 @@ MODEL_CONFIGS = {
         "precision":   "float16",
         "device_map":  "auto",
         "trust_remote_code": False,
-        "stereo_batch": 16,
-        "toxicity_batch": 16,
+        "stereo_batch": 64,
+        "toxicity_batch": 64,
     },
 }
 
@@ -103,7 +103,7 @@ GEN_TRUNC_LENGTH   = 512    # max input tokens (left-padded)
 # ── Detoxify settings ─────────────────────────────────────────────────────────
 DETOXIFY_EN_MODEL   = "original"       # for English continuations
 DETOXIFY_MULTI_MODEL= "multilingual"   # for Tamil and Hindi continuations
-DETOXIFY_BATCH_SIZE = 512
+DETOXIFY_BATCH_SIZE = 1024
 
 # ── CrowS-Pairs bias categories ───────────────────────────────────────────────
 STEREO_CATEGORIES = [
