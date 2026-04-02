@@ -62,8 +62,8 @@ MODEL_CONFIGS = {
         "precision":   "float32",   # float16 causes NaN in log-likelihood
         "device_map":  "cuda",
         "trust_remote_code": False,
-        "stereo_batch": 64,
-        "toxicity_batch": 64,
+        "stereo_batch": 32,
+        "toxicity_batch": 32,
     },
     "Falcon-1B": {
         "repo":        "tiiuae/falcon-rw-1b",
@@ -87,8 +87,8 @@ MODEL_CONFIGS = {
         "precision":   "float16",
         "device_map":  "auto",
         "trust_remote_code": False,
-        "stereo_batch": 64,
-        "toxicity_batch": 64,
+        "stereo_batch": 32,
+        "toxicity_batch": 32,
     },
 }
 
