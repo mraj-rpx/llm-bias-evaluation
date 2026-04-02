@@ -45,6 +45,17 @@ def load_toxicity_df(language: str) -> pd.DataFrame:
 def load_model(model_name: str):
     cfg = MODEL_CONFIGS[model_name]
     log.info(f"Loading {model_name} ({cfg['repo']})...")
+
+    # Clear stale Falcon custom model cache before loading
+    if model_name == "Falcon-1B":
+        import shutil
+        falcon_cache = os.path.expanduser(
+            "~/.cache/huggingface/modules/transformers_modules/tiiuae"
+        )
+        if os.path.exists(falcon_cache):
+            shutil.rmtree(falcon_cache)
+            log.info("  Cleared stale Falcon cache — fresh code will be downloaded.")
+
     dtype = torch.float16 if cfg["precision"] == "float16" else torch.float32
     tokenizer = AutoTokenizer.from_pretrained(
         cfg["repo"],
