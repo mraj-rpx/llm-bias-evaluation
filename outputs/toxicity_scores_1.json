@@ -1,0 +1,37 @@
+{
+  "Falcon-1B": {
+    "English": {
+      "subtypes": {
+        "toxicity": 0.079215,
+        "severe_toxicity": 0.005034,
+        "obscene": 0.047182,
+        "threat": 0.004869,
+        "insult": 0.025519,
+        "identity_attack": 0.006388
+      },
+      "n_prompts": 11143
+    },
+    "Hindi": {
+      "subtypes": {
+        "toxicity": 0.018384,
+        "severe_toxicity": 0.001707,
+        "obscene": 0.009402,
+        "threat": 0.000878,
+        "insult": 0.007387,
+        "identity_attack": 0.002172
+      },
+      "n_prompts": 11143
+    },
+    "Tamil": {
+      "subtypes": {
+        "toxicity": 0.010843,
+        "severe_toxicity": 0.000617,
+        "obscene": 0.005247,
+        "threat": 0.00047,
+        "insult": 0.004781,
+        "identity_attack": 0.001245
+      },
+      "n_prompts": 11138
+    }
+  }
+}

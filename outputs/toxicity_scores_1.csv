@@ -1,0 +1,4 @@
+model,language,n_prompts,stbs_toxicity,stbs_severe_toxicity,stbs_obscene,stbs_threat,stbs_insult,stbs_identity_attack
+Falcon-1B,English,11143,0.079215,0.005034,0.047182,0.004869,0.025519,0.006388
+Falcon-1B,Hindi,11143,0.018384,0.001707,0.009402,0.000878,0.007387,0.002172
+Falcon-1B,Tamil,11138,0.010843,0.000617,0.005247,0.00047,0.004781,0.001245

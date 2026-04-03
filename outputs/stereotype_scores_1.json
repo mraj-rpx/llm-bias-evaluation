@@ -1,0 +1,49 @@
+{
+  "Falcon-1B": {
+    "English": {
+      "overall_sbs": 64.6552,
+      "categories": {
+        "age": 67.8161,
+        "disability": 70.0,
+        "gender": 63.7405,
+        "nationality": 55.3459,
+        "physical-appearance": 68.254,
+        "race-color": 62.9845,
+        "religion": 67.619,
+        "sexual-orientation": 71.4286,
+        "socioeconomic": 69.7674
+      },
+      "n_pairs": 1508
+    },
+    "Hindi": {
+      "overall_sbs": 47.3475,
+      "categories": {
+        "age": 54.023,
+        "disability": 33.3333,
+        "gender": 45.8015,
+        "nationality": 41.5094,
+        "physical-appearance": 50.7937,
+        "race-color": 50.1938,
+        "religion": 56.1905,
+        "sexual-orientation": 36.9048,
+        "socioeconomic": 46.5116
+      },
+      "n_pairs": 1508
+    },
+    "Tamil": {
+      "overall_sbs": 47.2149,
+      "categories": {
+        "age": 47.1264,
+        "disability": 30.0,
+        "gender": 55.7252,
+        "nationality": 50.3145,
+        "physical-appearance": 61.9048,
+        "race-color": 43.6047,
+        "religion": 42.8571,
+        "sexual-orientation": 52.381,
+        "socioeconomic": 43.0233
+      },
+      "n_pairs": 1508
+    }
+  }
+}

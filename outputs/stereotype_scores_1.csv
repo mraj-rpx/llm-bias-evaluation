@@ -1,0 +1,4 @@
+model,language,overall_sbs,n_pairs,csbs_age,csbs_disability,csbs_gender,csbs_nationality,csbs_physical-appearance,csbs_race-color,csbs_religion,csbs_sexual-orientation,csbs_socioeconomic
+Falcon-1B,English,64.6552,1508,67.8161,70.0,63.7405,55.3459,68.254,62.9845,67.619,71.4286,69.7674
+Falcon-1B,Hindi,47.3475,1508,54.023,33.3333,45.8015,41.5094,50.7937,50.1938,56.1905,36.9048,46.5116
+Falcon-1B,Tamil,47.2149,1508,47.1264,30.0,55.7252,50.3145,61.9048,43.6047,42.8571,52.381,43.0233

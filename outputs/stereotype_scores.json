@@ -1,47 +1,235 @@
 {
-  "Falcon-1B": {
+  "BLOOM-560M": {
     "English": {
-      "overall_sbs": 2.122,
+      "overall_sbs": 57.6923,
       "categories": {
-        "age": 2.2989,
-        "disability": 1.6667,
-        "gender": 1.145,
-        "nationality": 1.8868,
-        "physical-appearance": 3.1746,
-        "race-color": 2.1318,
-        "religion": 1.9048,
-        "sexual-orientation": 2.381,
-        "socioeconomic": 3.4884
+        "age": 55.1724,
+        "disability": 76.6667,
+        "gender": 60.687,
+        "nationality": 50.3145,
+        "physical-appearance": 52.381,
+        "race-color": 53.1008,
+        "religion": 56.1905,
+        "sexual-orientation": 67.8571,
+        "socioeconomic": 66.2791
       },
       "n_pairs": 1508
     },
     "Hindi": {
-      "overall_sbs": 1.1936,
+      "overall_sbs": 58.6207,
       "categories": {
-        "age": 0.0,
-        "disability": 0.0,
-        "gender": 0.7634,
-        "nationality": 0.6289,
-        "physical-appearance": 0.0,
-        "race-color": 1.1628,
-        "religion": 4.7619,
-        "sexual-orientation": 0.0,
-        "socioeconomic": 2.3256
+        "age": 51.7241,
+        "disability": 55.0,
+        "gender": 52.6718,
+        "nationality": 57.2327,
+        "physical-appearance": 47.619,
+        "race-color": 63.3721,
+        "religion": 64.7619,
+        "sexual-orientation": 53.5714,
+        "socioeconomic": 62.2093
       },
       "n_pairs": 1508
     },
     "Tamil": {
-      "overall_sbs": 1.1936,
+      "overall_sbs": 50.3316,
       "categories": {
-        "age": 0.0,
-        "disability": 3.3333,
-        "gender": 1.5267,
-        "nationality": 0.6289,
-        "physical-appearance": 3.1746,
-        "race-color": 0.969,
-        "religion": 1.9048,
-        "sexual-orientation": 0.0,
-        "socioeconomic": 1.1628
+        "age": 44.8276,
+        "disability": 65.0,
+        "gender": 51.9084,
+        "nationality": 52.8302,
+        "physical-appearance": 47.619,
+        "race-color": 49.6124,
+        "religion": 46.6667,
+        "sexual-orientation": 60.7143,
+        "socioeconomic": 43.6047
+      },
+      "n_pairs": 1508
+    }
+  },
+  "Falcon-1B": {
+    "English": {
+      "overall_sbs": 64.6552,
+      "categories": {
+        "age": 67.8161,
+        "disability": 70.0,
+        "gender": 63.7405,
+        "nationality": 55.3459,
+        "physical-appearance": 68.254,
+        "race-color": 62.9845,
+        "religion": 67.619,
+        "sexual-orientation": 71.4286,
+        "socioeconomic": 69.7674
+      },
+      "n_pairs": 1508
+    },
+    "Hindi": {
+      "overall_sbs": 47.3475,
+      "categories": {
+        "age": 54.023,
+        "disability": 33.3333,
+        "gender": 45.8015,
+        "nationality": 41.5094,
+        "physical-appearance": 50.7937,
+        "race-color": 50.1938,
+        "religion": 56.1905,
+        "sexual-orientation": 36.9048,
+        "socioeconomic": 46.5116
+      },
+      "n_pairs": 1508
+    },
+    "Tamil": {
+      "overall_sbs": 47.2149,
+      "categories": {
+        "age": 47.1264,
+        "disability": 30.0,
+        "gender": 55.7252,
+        "nationality": 50.3145,
+        "physical-appearance": 61.9048,
+        "race-color": 43.6047,
+        "religion": 42.8571,
+        "sexual-orientation": 52.381,
+        "socioeconomic": 43.0233
+      },
+      "n_pairs": 1508
+    }
+  },
+  "GPT-J-6B": {
+    "English": {
+      "overall_sbs": 65.7162,
+      "categories": {
+        "age": 59.7701,
+        "disability": 70.0,
+        "gender": 66.7939,
+        "nationality": 57.2327,
+        "physical-appearance": 71.4286,
+        "race-color": 64.1473,
+        "religion": 77.1429,
+        "sexual-orientation": 67.8571,
+        "socioeconomic": 68.0233
+      },
+      "n_pairs": 1508
+    },
+    "Hindi": {
+      "overall_sbs": 44.695,
+      "categories": {
+        "age": 47.1264,
+        "disability": 31.6667,
+        "gender": 54.5802,
+        "nationality": 35.2201,
+        "physical-appearance": 39.6825,
+        "race-color": 37.0155,
+        "religion": 58.0952,
+        "sexual-orientation": 53.5714,
+        "socioeconomic": 54.0698
+      },
+      "n_pairs": 1508
+    },
+    "Tamil": {
+      "overall_sbs": 40.6499,
+      "categories": {
+        "age": 44.8276,
+        "disability": 25.0,
+        "gender": 58.3969,
+        "nationality": 35.2201,
+        "physical-appearance": 41.2698,
+        "race-color": 36.0465,
+        "religion": 33.3333,
+        "sexual-orientation": 53.5714,
+        "socioeconomic": 33.7209
+      },
+      "n_pairs": 1508
+    }
+  },
+  "LLaMA-2-7B": {
+    "English": {
+      "overall_sbs": 66.2467,
+      "categories": {
+        "age": 70.1149,
+        "disability": 73.3333,
+        "gender": 58.7786,
+        "nationality": 61.0063,
+        "physical-appearance": 73.0159,
+        "race-color": 67.8295,
+        "religion": 67.619,
+        "sexual-orientation": 76.1905,
+        "socioeconomic": 65.1163
+      },
+      "n_pairs": 1508
+    },
+    "Hindi": {
+      "overall_sbs": 47.7454,
+      "categories": {
+        "age": 55.1724,
+        "disability": 50.0,
+        "gender": 57.2519,
+        "nationality": 32.7044,
+        "physical-appearance": 49.2063,
+        "race-color": 46.8992,
+        "religion": 33.3333,
+        "sexual-orientation": 48.8095,
+        "socioeconomic": 52.907
+      },
+      "n_pairs": 1508
+    },
+    "Tamil": {
+      "overall_sbs": 43.1698,
+      "categories": {
+        "age": 41.3793,
+        "disability": 35.0,
+        "gender": 55.3435,
+        "nationality": 33.3333,
+        "physical-appearance": 52.381,
+        "race-color": 39.9225,
+        "religion": 32.381,
+        "sexual-orientation": 47.619,
+        "socioeconomic": 48.2558
+      },
+      "n_pairs": 1508
+    }
+  },
+  "Mistral-7B": {
+    "English": {
+      "overall_sbs": 66.8435,
+      "categories": {
+        "age": 73.5632,
+        "disability": 85.0,
+        "gender": 63.3588,
+        "nationality": 54.717,
+        "physical-appearance": 65.0794,
+        "race-color": 65.5039,
+        "religion": 68.5714,
+        "sexual-orientation": 76.1905,
+        "socioeconomic": 72.6744
+      },
+      "n_pairs": 1508
+    },
+    "Hindi": {
+      "overall_sbs": 52.5199,
+      "categories": {
+        "age": 62.069,
+        "disability": 38.3333,
+        "gender": 57.2519,
+        "nationality": 36.478,
+        "physical-appearance": 50.7937,
+        "race-color": 52.7132,
+        "religion": 64.7619,
+        "sexual-orientation": 34.5238,
+        "socioeconomic": 61.6279
+      },
+      "n_pairs": 1508
+    },
+    "Tamil": {
+      "overall_sbs": 48.5411,
+      "categories": {
+        "age": 41.3793,
+        "disability": 21.6667,
+        "gender": 58.0153,
+        "nationality": 42.1384,
+        "physical-appearance": 57.1429,
+        "race-color": 45.7364,
+        "religion": 39.0476,
+        "sexual-orientation": 53.5714,
+        "socioeconomic": 61.6279
       },
       "n_pairs": 1508
     }
