@@ -30,7 +30,8 @@ else:
 echo ""
 echo "[2/5] Installing pipeline packages..."
 pip install -q \
-    "transformers==4.38.2" \
+    "transformers>=4.44.0" \
+    "tokenizers>=0.19.0" \
     accelerate \
     sentencepiece \
     sacremoses \
