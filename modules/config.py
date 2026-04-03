@@ -67,7 +67,7 @@ MODEL_CONFIGS = {
     },
     "Falcon-1B": {
         "repo":        "tiiuae/falcon-rw-1b",
-        "precision":   "float16",
+        "precision":   "float32",
         "device_map":  "cuda",
         "trust_remote_code": True,  # required for Falcon custom architecture
         "stereo_batch": 32,

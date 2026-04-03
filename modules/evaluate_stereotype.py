@@ -65,12 +65,13 @@ def load_model(model_name: str):
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
+    use_sf = False if model_name == "Falcon-1B" else True
     model = AutoModelForCausalLM.from_pretrained(
         cfg["repo"],
         torch_dtype=dtype,
         device_map=cfg["device_map"],
         trust_remote_code=cfg["trust_remote_code"],
-        use_safetensors=True,
+        use_safetensors=use_sf,
         revision=cfg.get("revision", "main"),
     )
     model.eval()

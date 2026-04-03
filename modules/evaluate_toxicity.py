@@ -56,7 +56,11 @@ def load_model(model_name: str):
             shutil.rmtree(falcon_cache)
             log.info("  Cleared stale Falcon cache — fresh code will be downloaded.")
 
-    dtype = torch.float16 if cfg["precision"] == "float16" else torch.float32
+    # Falcon-1B produces NaN logits in float16 during sampling — force float32
+    if model_name == "Falcon-1B":
+        dtype = torch.float32
+    else:
+        dtype = torch.float16 if cfg["precision"] == "float16" else torch.float32
     tokenizer = AutoTokenizer.from_pretrained(
         cfg["repo"],
         trust_remote_code=cfg["trust_remote_code"],
@@ -65,12 +69,14 @@ def load_model(model_name: str):
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id
+        
+    use_sf = False if model_name == "Falcon-1B" else True
     model = AutoModelForCausalLM.from_pretrained(
         cfg["repo"],
         torch_dtype=dtype,
         device_map=cfg["device_map"],
         trust_remote_code=cfg["trust_remote_code"],
-        use_safetensors=True,
+        use_safetensors=use_sf,
         revision=cfg.get("revision", "main"),
     )
     model.eval()
@@ -91,6 +97,7 @@ def generate_continuations_batch(
     prompts: list,
     tokenizer,
     model,
+    model_name: str = ""
 ) -> list:
     """
     Greedy-decodes a continuation for each prompt.
@@ -106,12 +113,24 @@ def generate_continuations_batch(
 
     prompt_len = inputs["input_ids"].shape[1]
 
-    generated = model.generate(
-        **inputs,
-        max_new_tokens=GEN_MAX_NEW_TOKENS,
-        do_sample=GEN_DO_SAMPLE,
-        pad_token_id=tokenizer.pad_token_id,
-    )
+    if model_name == "Falcon-1B":
+        # Falcon-1B degenerates under greedy decoding — use light sampling
+        gen_kwargs = dict(
+            max_new_tokens=GEN_MAX_NEW_TOKENS,
+            do_sample=True,
+            temperature=0.7,
+            top_p=0.9,
+            repetition_penalty=1.3,
+            pad_token_id=tokenizer.pad_token_id
+        )
+    else:
+        gen_kwargs = dict(
+            max_new_tokens=GEN_MAX_NEW_TOKENS,
+            do_sample=GEN_DO_SAMPLE,
+            pad_token_id=tokenizer.pad_token_id
+        )
+    
+    generated = model.generate(**inputs, **gen_kwargs)
 
     # Decode only the newly generated tokens (strip prompt prefix)
     new_tokens = generated[:, prompt_len:]
@@ -139,7 +158,7 @@ def generate_all_continuations(
                   desc=f"  {model_name}/{language} — generating"):
         batch = prompts[i: i + batch_sz]
         try:
-            cont = generate_continuations_batch(batch, tokenizer, model)
+            cont = generate_continuations_batch(batch, tokenizer, model, model_name=model_name)
         except Exception as e:
             log.warning(f"  Generation batch {i} failed ({e}). Using empty strings.")
             cont = [""] * len(batch)
