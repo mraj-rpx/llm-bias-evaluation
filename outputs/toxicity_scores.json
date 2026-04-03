@@ -2,176 +2,141 @@
   "BLOOM-560M": {
     "English": {
       "subtypes": {
-        "toxicity": 0.201546,
-        "severe_toxicity": 0.018542,
-        "obscene": 0.172907,
-        "threat": 0.002818,
-        "insult": 0.054304,
-        "identity_attack": 0.001564
+        "toxicity": 0.095685,
+        "severe_toxicity": 0.007743,
+        "obscene": 0.045851,
+        "threat": 0.006518,
+        "insult": 0.034783,
+        "identity_attack": 0.008508
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Hindi": {
       "subtypes": {
-        "toxicity": 0.015404,
-        "severe_toxicity": 0.004498,
-        "obscene": 0.027199,
-        "threat": 0.003137,
-        "insult": 0.03187,
-        "identity_attack": 0.009348
+        "toxicity": 0.011869,
+        "severe_toxicity": 0.003607,
+        "obscene": 0.02127,
+        "threat": 0.002214,
+        "insult": 0.022819,
+        "identity_attack": 0.005878
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Tamil": {
       "subtypes": {
-        "toxicity": 0.000728,
-        "severe_toxicity": 0.00237,
-        "obscene": 0.015746,
-        "threat": 0.001073,
-        "insult": 0.014069,
-        "identity_attack": 0.003135
+        "toxicity": 0.004725,
+        "severe_toxicity": 0.001636,
+        "obscene": 0.010118,
+        "threat": 0.000763,
+        "insult": 0.009852,
+        "identity_attack": 0.002247
       },
-      "n_prompts": 10
-    }
-  },
-  "Falcon-1B": {
-    "English": {
-      "subtypes": {
-        "toxicity": 0.002138,
-        "severe_toxicity": 9.9e-05,
-        "obscene": 0.000239,
-        "threat": 0.000101,
-        "insult": 0.000206,
-        "identity_attack": 0.000153
-      },
-      "n_prompts": 10
-    },
-    "Hindi": {
-      "subtypes": {
-        "toxicity": 0.001169,
-        "severe_toxicity": 0.00024,
-        "obscene": 0.002723,
-        "threat": 0.000248,
-        "insult": 0.00384,
-        "identity_attack": 0.000874
-      },
-      "n_prompts": 10
-    },
-    "Tamil": {
-      "subtypes": {
-        "toxicity": 0.001169,
-        "severe_toxicity": 0.00024,
-        "obscene": 0.002723,
-        "threat": 0.000248,
-        "insult": 0.00384,
-        "identity_attack": 0.000874
-      },
-      "n_prompts": 10
+      "n_prompts": 11138
     }
   },
   "GPT-J-6B": {
     "English": {
       "subtypes": {
-        "toxicity": 0.195104,
-        "severe_toxicity": 0.030397,
-        "obscene": 0.161513,
-        "threat": 0.00057,
-        "insult": 0.168653,
-        "identity_attack": 0.005886
+        "toxicity": 0.123725,
+        "severe_toxicity": 0.011036,
+        "obscene": 0.06831,
+        "threat": 0.010433,
+        "insult": 0.048347,
+        "identity_attack": 0.011445
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Hindi": {
       "subtypes": {
-        "toxicity": 0.000574,
-        "severe_toxicity": 0.004218,
-        "obscene": 0.030176,
-        "threat": 0.001758,
-        "insult": 0.027873,
-        "identity_attack": 0.005328
+        "toxicity": 0.006478,
+        "severe_toxicity": 0.004669,
+        "obscene": 0.032001,
+        "threat": 0.002045,
+        "insult": 0.029091,
+        "identity_attack": 0.00594
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Tamil": {
       "subtypes": {
-        "toxicity": 0.000666,
-        "severe_toxicity": 0.002582,
-        "obscene": 0.019223,
-        "threat": 0.001129,
-        "insult": 0.016547,
-        "identity_attack": 0.002879
+        "toxicity": 0.005866,
+        "severe_toxicity": 0.002483,
+        "obscene": 0.018118,
+        "threat": 0.001397,
+        "insult": 0.015896,
+        "identity_attack": 0.003068
       },
-      "n_prompts": 10
+      "n_prompts": 11138
     }
   },
   "LLaMA-2-7B": {
     "English": {
       "subtypes": {
-        "toxicity": 0.218581,
-        "severe_toxicity": 0.042471,
-        "obscene": 0.191648,
-        "threat": 0.003348,
-        "insult": 0.141796,
-        "identity_attack": 0.012802
+        "toxicity": 0.124805,
+        "severe_toxicity": 0.011543,
+        "obscene": 0.070247,
+        "threat": 0.01038,
+        "insult": 0.048716,
+        "identity_attack": 0.013269
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Hindi": {
       "subtypes": {
-        "toxicity": 0.000536,
-        "severe_toxicity": 0.004092,
-        "obscene": 0.029889,
-        "threat": 0.001758,
-        "insult": 0.026782,
-        "identity_attack": 0.005104
+        "toxicity": 0.007691,
+        "severe_toxicity": 0.00453,
+        "obscene": 0.032645,
+        "threat": 0.002097,
+        "insult": 0.029598,
+        "identity_attack": 0.005728
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Tamil": {
       "subtypes": {
-        "toxicity": 0.0006,
-        "severe_toxicity": 0.003557,
-        "obscene": 0.026293,
-        "threat": 0.00152,
-        "insult": 0.02237,
-        "identity_attack": 0.004294
+        "toxicity": 0.007042,
+        "severe_toxicity": 0.004057,
+        "obscene": 0.028101,
+        "threat": 0.001953,
+        "insult": 0.02429,
+        "identity_attack": 0.004707
       },
-      "n_prompts": 10
+      "n_prompts": 11138
     }
   },
   "Mistral-7B": {
     "English": {
       "subtypes": {
-        "toxicity": 0.197738,
-        "severe_toxicity": 0.03604,
-        "obscene": 0.102272,
-        "threat": 0.003606,
-        "insult": 0.098307,
-        "identity_attack": 0.003378
+        "toxicity": 0.116383,
+        "severe_toxicity": 0.009523,
+        "obscene": 0.065268,
+        "threat": 0.008114,
+        "insult": 0.042556,
+        "identity_attack": 0.011086
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Hindi": {
       "subtypes": {
-        "toxicity": 0.000538,
-        "severe_toxicity": 0.003713,
-        "obscene": 0.026753,
-        "threat": 0.00159,
-        "insult": 0.024048,
-        "identity_attack": 0.004763
+        "toxicity": 0.014728,
+        "severe_toxicity": 0.004188,
+        "obscene": 0.029654,
+        "threat": 0.002945,
+        "insult": 0.029157,
+        "identity_attack": 0.005484
       },
-      "n_prompts": 10
+      "n_prompts": 11143
     },
     "Tamil": {
       "subtypes": {
-        "toxicity": 0.000632,
-        "severe_toxicity": 0.003286,
-        "obscene": 0.024375,
-        "threat": 0.001393,
-        "insult": 0.020709,
-        "identity_attack": 0.003881
+        "toxicity": 0.008586,
+        "severe_toxicity": 0.003712,
+        "obscene": 0.025555,
+        "threat": 0.001965,
+        "insult": 0.022343,
+        "identity_attack": 0.004794
       },
-      "n_prompts": 10
+      "n_prompts": 11138
     }
   }
 }
